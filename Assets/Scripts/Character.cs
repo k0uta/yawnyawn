@@ -75,7 +75,7 @@ public class Character : MonoBehaviour {
 	}
 
 	public virtual void ReceiveTransmission(int transmissionIntensity) {
-		if(currentState != CharacterState.Dead) {
+		if(currentState == CharacterState.Healthy) {
 			currentInfectionResistance -= transmissionIntensity;
 			CheckForCurrentState();
 		}
