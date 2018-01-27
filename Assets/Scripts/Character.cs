@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour {
-
-	public enum CharacterDirection {
+public enum CharacterDirection {
 		Right,
 		Left,
 		Up,
 		Down
 	}
 
-	public enum CharacterState {
-		Healthy,
-		Infected,
-		Dead
-	}
+public enum CharacterState {
+	Healthy,
+	Infected,
+	Dead,
+	Transmiting
+}
+
+public class Character : MonoBehaviour {
 
 	public List<CharacterDirection> peekDirections = new List<CharacterDirection>();
 
@@ -39,10 +40,13 @@ public class Character : MonoBehaviour {
 
 	protected int currentInfectionDuration;
 
+	private CharacterSpriteMovement characterSpriteMovement;
+
 	// Use this for initialization
 	void Start() {
 		currentHealth = health;
 		ResetInfection();
+		characterSpriteMovement = GetComponentInChildren<CharacterSpriteMovement>();
 	}
 	
 	// Update is called once per frame
@@ -56,7 +60,7 @@ public class Character : MonoBehaviour {
 			currentDirectionIndex = 0;
 		}
 
-		Debug.Log(GetCharacterDirection());
+		characterSpriteMovement.ChangeState(currentState, GetCharacterDirection());
 	}
 
 	public CharacterDirection GetCharacterDirection() {
@@ -77,12 +81,15 @@ public class Character : MonoBehaviour {
 		}
 	}
 
-	public virtual void OnTransmissionTurn() {
+	public virtual void Transmit() {
 		if(currentState == CharacterState.Infected) {
 			currentInfectionDuration -= 1;
 			currentHealth -= 1;
-
 			CheckForCurrentState();
+
+			if (currentState != CharacterState.Dead) {
+				ChangeState(CharacterState.Transmiting);
+			}
 		}
 	}
 
@@ -98,16 +105,25 @@ public class Character : MonoBehaviour {
 		}
 	}
 
+	public virtual void EndTransmission() {
+		CheckForCurrentState();
+	}
+
 	public virtual void Infect() {
-		currentState = CharacterState.Infected;
+		ChangeState(CharacterState.Infected);
 	}
 
 	public virtual void EndInfection() {
-		currentState = CharacterState.Healthy;
+		ChangeState(CharacterState.Healthy);
 		ResetInfection();
 	}
 
 	public virtual void Die() {
-		currentState = CharacterState.Dead;
+		ChangeState(CharacterState.Dead);
+	}
+
+	void ChangeState(CharacterState characterState) {
+		currentState = characterState;
+		characterSpriteMovement.ChangeState(currentState, GetCharacterDirection());
 	}
 }
