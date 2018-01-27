@@ -17,12 +17,16 @@ public class StageManager : MonoBehaviour {
 
 	private Character[,] characters;
 
+	private Inspector inspector;
+
 	private float lastTimeUpdated = 0f;
 
 	private Vector2Int[] directions;
 
 	// Use this for initialization
 	void Start () {
+		inspector = GameObject.FindGameObjectWithTag("Inspector").GetComponent<Inspector>();
+
 		InitializeGrid();
 
 		InitializeDirections();
@@ -64,6 +68,8 @@ public class StageManager : MonoBehaviour {
 				}
 			}
 		}
+
+		inspector.Move();
 	}
 
 
