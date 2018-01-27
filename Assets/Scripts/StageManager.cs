@@ -19,6 +19,8 @@ public class StageManager : MonoBehaviour {
 
 	public float transmissionInSeconds = 1.0f;
 
+	public float turnPenaltyInSeconds = 1.5f;
+
 	public float infectionInSeconds = 1.0f;
 
 	public int transmissionTurns = 5;
@@ -48,7 +50,13 @@ public class StageManager : MonoBehaviour {
 	void Update () {
 		lastTimeUpdated += Time.deltaTime;
 
-		if (currentStage == Stage.Transmitting) {
+		if (inspector.currentState == InspectorState.Triggered){
+			if (lastTimeUpdated >= turnPenaltyInSeconds) {
+				lastTimeUpdated = 0f;
+				inspector.updateState();				
+			}
+		}
+		else if (currentStage == Stage.Transmitting) {
 			if (lastTimeUpdated >= transmissionInSeconds) {
 				lastTimeUpdated = 0f;
 				FinishTranmissions();
@@ -95,8 +103,13 @@ public class StageManager : MonoBehaviour {
 		currentStage = Stage.Infecting;
 
 		EndTransmissions();
-
-		InfectCachedCharacters();
+		if (inspector.currentState == InspectorState.Inspecting){
+				transmissionTurns -= inspector.turnPenalty;
+				inspector.triggerPenalty();
+		}
+		else{
+			InfectCachedCharacters();
+		}
 	}
 
 

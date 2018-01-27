@@ -21,6 +21,8 @@ public class Inspector : MonoBehaviour {
 	public InspectorState currentState;
 
 	private InspectorSpriteMovement inspectorSpriteMovement;
+
+	public int turnPenalty;
 	// Use this for initialization
 	void Start () {
 		currentState = InspectorState.Idle;
@@ -62,5 +64,10 @@ public class Inspector : MonoBehaviour {
 			
 			remainingTurns = (int)Random.Range(minIdleTurns, maxIdleTurns);
 		}
+	}
+
+	public void triggerPenalty() {
+		currentState = InspectorState.Triggered;
+		inspectorSpriteMovement.ChangeState(currentState);
 	}
 }

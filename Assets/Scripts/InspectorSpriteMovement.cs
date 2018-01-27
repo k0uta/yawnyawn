@@ -6,11 +6,14 @@ public class InspectorSpriteMovement : MonoBehaviour {
 
 	public List<Sprite> inspectorSprites;
 
-	private SpriteRenderer spriteRenderer;
+	private SpriteRenderer inspectorRenderer;
+	private SpriteRenderer exclamationMark;
 
 	// Use this for initialization
 	void Start () {
-		spriteRenderer = GetComponent<SpriteRenderer>();
+		inspectorRenderer = GetComponent<SpriteRenderer>();
+		exclamationMark = transform.Find("Exclamation").GetComponent<SpriteRenderer>();
+		exclamationMark.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -20,6 +23,8 @@ public class InspectorSpriteMovement : MonoBehaviour {
 
 	public void ChangeState(InspectorState inspectorState) {
 		Sprite newSprite = inspectorSprites[(int)inspectorState];
-		spriteRenderer.sprite = newSprite;
+		inspectorRenderer.sprite = newSprite;
+
+		exclamationMark.enabled = (inspectorState == InspectorState.Triggered);
 	}
 }
