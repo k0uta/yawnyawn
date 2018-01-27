@@ -15,9 +15,12 @@ public class CharacterSpriteMovement : MonoBehaviour {
 
 	public List<Sprite> deadSprites;
 
+	public SpriteRenderer yawnSprite;
+
 	private Dictionary<CharacterState, List<Sprite>> spriteListByState;
 
 	private SpriteRenderer spriteRenderer;
+
 
 	// Use this for initialization
 	void Start () {
@@ -29,14 +32,16 @@ public class CharacterSpriteMovement : MonoBehaviour {
 
 		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
-	public void ChangeState(CharacterState characterState, CharacterDirection characterDirection) {
+	public void ChangeState(CharacterState characterState, CharacterDirection characterDirection, bool showYawn) {
 		Sprite newSprite = spriteListByState[characterState][(int) characterDirection];
 		spriteRenderer.sprite = newSprite;
+
+		yawnSprite.enabled = showYawn;
 	}
 }

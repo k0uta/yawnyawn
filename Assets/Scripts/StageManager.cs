@@ -127,13 +127,6 @@ public class StageManager : MonoBehaviour {
 			CharacterState initialState = character.currentState;
 
 			character.ReceiveTransmission(1);
-
-			if (
-				initialState == CharacterState.Healthy &&
-				character.currentState == CharacterState.Infected
-			) {
-				character.Transmit();
-			}
 		}
 	}
 

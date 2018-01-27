@@ -60,7 +60,7 @@ public class Character : MonoBehaviour {
 			currentDirectionIndex = 0;
 		}
 
-		characterSpriteMovement.ChangeState(currentState, GetCharacterDirection());
+		characterSpriteMovement.ChangeState(currentState, GetCharacterDirection(), false);
 	}
 
 	public CharacterDirection GetCharacterDirection() {
@@ -78,6 +78,10 @@ public class Character : MonoBehaviour {
 		if(currentState == CharacterState.Healthy) {
 			currentInfectionResistance -= transmissionIntensity;
 			CheckForCurrentState();
+
+			if (currentState == CharacterState.Infected) {
+				ChangeState(CharacterState.Transmiting, true);
+			}
 		}
 	}
 
@@ -122,8 +126,14 @@ public class Character : MonoBehaviour {
 		ChangeState(CharacterState.Dead);
 	}
 
-	void ChangeState(CharacterState characterState) {
+
+	public void ChangeState(CharacterState characterState, bool showYawn) {
 		currentState = characterState;
-		characterSpriteMovement.ChangeState(currentState, GetCharacterDirection());
+		characterSpriteMovement.ChangeState(currentState, GetCharacterDirection(), showYawn);
+	}
+
+
+	public void ChangeState(CharacterState characterState) {
+		ChangeState(characterState, false);
 	}
 }
