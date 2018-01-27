@@ -19,10 +19,7 @@ public class Character : MonoBehaviour {
 
 	public List<CharacterDirection> peekDirections = new List<CharacterDirection>();
 
-	public int currentDirectionIndex;
-
-	// TODO: Move to Scene Class
-	public static float tickInSeconds = 1.0f;
+	public int currentDirectionIndex = 0;
 
 	public int infectionResistance = 1;
 
@@ -53,11 +50,13 @@ public class Character : MonoBehaviour {
 		
 	}
 
-	public virtual void OnMovementTurn() {
+	public virtual void Move() {
 		currentDirectionIndex++;
 		if (currentDirectionIndex >= peekDirections.Count) {
 			currentDirectionIndex = 0;
 		}
+
+		Debug.Log(GetCharacterDirection());
 	}
 
 	public CharacterDirection GetCharacterDirection() {

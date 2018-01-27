@@ -5,7 +5,9 @@ using Assets.UltimateIsometricToolkit.Scripts.Core;
 
 public class StageManager : MonoBehaviour {
 
-	public Character[,] characters;
+	public float tickInSeconds = 1.0f;
+
+	private Character[,] characters;
 
 	private float lastTimeUpdated = 0f;
 
@@ -13,6 +15,32 @@ public class StageManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		InitializeGrid();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		lastTimeUpdated += Time.deltaTime;
+
+		if (lastTimeUpdated >= tickInSeconds) {
+			lastTimeUpdated = 0f;
+			StageTurn();
+		}
+	}
+
+	private void StageTurn() {
+		for (int i = 0; i < characters.GetLength(0); i++) {
+			for (int j = 0; j < characters.GetLength(1); j++) {
+				Character character = characters[i, j];
+				if (character) {
+					character.Move();
+				}
+			}
+		}
+	}
+
+
+	private void InitializeGrid() {
 		grid = GetComponent<Grid>();
 	
 		GameObject[] characterObjects = GameObject.FindGameObjectsWithTag("Character");
@@ -56,10 +84,5 @@ public class StageManager : MonoBehaviour {
 
 			characters[stageRows - gridPosition.y - 1, gridPosition.x] = character;
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		lastTimeUpdated += Time.deltaTime;
 	}
 }
