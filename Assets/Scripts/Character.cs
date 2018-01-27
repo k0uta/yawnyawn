@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum CharacterDirection {
-		Right,
-		Left,
-		Up,
-		Down
-	}
+	Right,
+	Left,
+	Up,
+	Down
+}
 
 public enum CharacterState {
 	Healthy,
@@ -27,7 +27,7 @@ public class Character : MonoBehaviour {
 	public int transmissionRange = 1;
 
 	public int infectionDuration = int.MaxValue;
-	
+
 	public int health = int.MaxValue;
 
 	public CharacterState currentState = CharacterState.Healthy;
@@ -48,10 +48,10 @@ public class Character : MonoBehaviour {
 		ResetInfection();
 		characterSpriteMovement = GetComponentInChildren<CharacterSpriteMovement>();
 	}
-	
+
 	// Update is called once per frame
 	void Update() {
-		
+
 	}
 
 	public virtual void Move() {

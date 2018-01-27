@@ -2,22 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.UltimateIsometricToolkit.Scripts.Core;
+using System;
+
 
 public class StageManager : MonoBehaviour {
 
 	public float tickInSeconds = 1.0f;
 
+	public int transmissionTurns = 5;
+
 	private Character[,] characters;
 
 	private float lastTimeUpdated = 0f;
 
-	private Grid grid;
+	private Vector2Int[] directions;
 
 	// Use this for initialization
 	void Start () {
 		InitializeGrid();
+
+		InitializeDirections();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		lastTimeUpdated += Time.deltaTime;
@@ -26,6 +32,13 @@ public class StageManager : MonoBehaviour {
 			lastTimeUpdated = 0f;
 			StageTurn();
 		}
+
+
+		// Input handling
+		if (Input.GetButtonDown("TriggerTransmission"))
+        {
+        	TransmissionTurn();
+        }
 	}
 
 	private void StageTurn() {
@@ -40,9 +53,55 @@ public class StageManager : MonoBehaviour {
 	}
 
 
+	private void TransmissionTurn() {
+		for (int i = 0; i < characters.GetLength(0); i++) {
+			for (int j = 0; j < characters.GetLength(1); j++) {
+				CheckCharacterTranssions(characters[i, j], new Vector2Int(i, j));
+			}
+		}
+	}
+
+	private void CheckCharacterTranssions(Character character, Vector2Int position) {
+		if (!character || character.currentState != CharacterState.Infected) {
+			return;
+		}
+
+		character.Transmit();
+
+		Vector2Int direction = directions[(int)character.GetCharacterDirection()];
+
+		for (int i = 1; i <= character.transmissionRange; i++) {
+			position += direction;
+
+			tryTransmissionToPosition(position);
+		}
+	}
+
+	private void tryTransmissionToPosition(Vector2Int position) {
+		Character character = characters[position.x, position.y];
+
+		if (character) {
+			character.ReceiveTransmission(1);
+		}
+	}
+
+
+	private void CheckForEndGame() {
+
+	}
+
+
+	private void TriggerLoseGame() {
+
+	}
+
+
+	private void TriggerWinGame() {
+
+	}
+
+
 	private void InitializeGrid() {
-		grid = GetComponent<Grid>();
-	
 		GameObject[] characterObjects = GameObject.FindGameObjectsWithTag("Character");
 
 		int minCol = int.MaxValue;
@@ -84,5 +143,14 @@ public class StageManager : MonoBehaviour {
 
 			characters[stageRows - gridPosition.y - 1, gridPosition.x] = character;
 		}
+	}
+
+	private void InitializeDirections() {
+		directions = new Vector2Int[4];
+
+		directions[(int)CharacterDirection.Up] = new Vector2Int(1, 0);
+		directions[(int)CharacterDirection.Down] = new Vector2Int(-1, 0);
+		directions[(int)CharacterDirection.Right] = new Vector2Int(0, 1);
+		directions[(int)CharacterDirection.Left] = new Vector2Int(0, -1);
 	}
 }
