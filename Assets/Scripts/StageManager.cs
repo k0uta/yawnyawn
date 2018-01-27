@@ -77,7 +77,7 @@ public class StageManager : MonoBehaviour {
 		}
 	}
 
-	private void tryTransmissionToPosition(Vector2Int position) {
+	private void TryTransmissionToPosition(Vector2Int position) {
 		Character character = characters[position.x, position.y];
 
 		if (character) {
