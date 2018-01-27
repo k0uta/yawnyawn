@@ -49,8 +49,8 @@ public class StageManager : MonoBehaviour {
 		// Input handling
 		if (!transmitting && Input.GetButtonDown("TriggerTransmission"))
         {
-        	TransmissionTurn();
 			lastTimeUpdated = 0f;
+        	TransmissionTurn();
         }
 	}
 
@@ -102,20 +102,32 @@ public class StageManager : MonoBehaviour {
 
 		character.Transmit();
 
-		Vector2Int direction = directions[(int)character.GetCharacterDirection()];
+		// Vector2Int direction = directions[(int)character.GetCharacterDirection()];
 
-		for (int i = 1; i <= character.transmissionRange; i++) {
-			position += direction;
+		for (int i = 0; i < directions.Length; i++) {
+			Vector2Int direction = directions[i];
+			CharacterDirection directionName = getOppositeDirection(i);
 
-			tryTransmissionToPosition(position);
+			for (int j = 1; j <= character.transmissionRange; j++) {
+				Vector2Int targetPosition = position + direction * j;
+
+				tryTransmissionToPosition(targetPosition, directionName);
+			}
 		}
 	}
 
 
-	private void tryTransmissionToPosition(Vector2Int position) {
+	private void tryTransmissionToPosition(Vector2Int position, CharacterDirection direction) {
+		if (
+			position.x < 0 || position.x >= characters.GetLength(0) ||
+			position.y < 0 || position.y >= characters.GetLength(1)
+		) {
+			return;
+		}
+
 		Character character = characters[position.x, position.y];
 
-		if (character) {
+		if (character && character.GetCharacterDirection() == direction) {
 			character.ReceiveTransmission(1);
 		}
 	}
@@ -186,9 +198,27 @@ public class StageManager : MonoBehaviour {
 	private void InitializeDirections() {
 		directions = new Vector2Int[4];
 
-		directions[(int)CharacterDirection.Up] = new Vector2Int(1, 0);
-		directions[(int)CharacterDirection.Down] = new Vector2Int(-1, 0);
 		directions[(int)CharacterDirection.Right] = new Vector2Int(0, 1);
 		directions[(int)CharacterDirection.Left] = new Vector2Int(0, -1);
+		directions[(int)CharacterDirection.Up] = new Vector2Int(-1, 0);
+		directions[(int)CharacterDirection.Down] = new Vector2Int(1, 0);
+	}
+
+
+	private CharacterDirection getOppositeDirection(int direction) {
+		if ((int)CharacterDirection.Right == direction) {
+			return CharacterDirection.Left;
+		}
+		else if ((int)CharacterDirection.Left == direction) {
+			return CharacterDirection.Right;
+		}
+		else if ((int)CharacterDirection.Up == direction) {
+			return CharacterDirection.Down;
+		}
+		else if ((int)CharacterDirection.Down == direction) {
+			return CharacterDirection.Up;
+		}
+
+		return CharacterDirection.Up;
 	}
 }
