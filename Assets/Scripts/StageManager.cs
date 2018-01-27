@@ -19,11 +19,15 @@ public class StageManager : MonoBehaviour {
 
 	public float transmissionInSeconds = 1.0f;
 
+	public float turnPenaltyInSeconds = 1.5f;
+
 	public float infectionInSeconds = 1.0f;
 
 	public int transmissionTurns = 5;
 
 	private Character[,] characters;
+
+	private Inspector inspector;
 
 	public float lastTimeUpdated = 0f;
 
@@ -35,6 +39,8 @@ public class StageManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		inspector = GameObject.FindGameObjectWithTag("Inspector").GetComponent<Inspector>();
+
 		InitializeGrid();
 
 		InitializeDirections();
@@ -44,7 +50,13 @@ public class StageManager : MonoBehaviour {
 	void Update () {
 		lastTimeUpdated += Time.deltaTime;
 
-		if (currentStage == Stage.Transmitting) {
+		if (inspector.currentState == InspectorState.Triggered){
+			if (lastTimeUpdated >= turnPenaltyInSeconds) {
+				lastTimeUpdated = 0f;
+				inspector.updateState();				
+			}
+		}
+		else if (currentStage == Stage.Transmitting) {
 			if (lastTimeUpdated >= transmissionInSeconds) {
 				lastTimeUpdated = 0f;
 				FinishTranmissions();
@@ -82,6 +94,8 @@ public class StageManager : MonoBehaviour {
 				}
 			}
 		}
+
+		inspector.Move();
 	}
 
 
@@ -89,8 +103,13 @@ public class StageManager : MonoBehaviour {
 		currentStage = Stage.Infecting;
 
 		EndTransmissions();
-
-		InfectCachedCharacters();
+		if (inspector.currentState == InspectorState.Inspecting){
+				transmissionTurns -= inspector.turnPenalty;
+				inspector.triggerPenalty();
+		}
+		else{
+			InfectCachedCharacters();
+		}
 	}
 
 
@@ -121,13 +140,6 @@ public class StageManager : MonoBehaviour {
 			CharacterState initialState = character.currentState;
 
 			character.ReceiveTransmission(1);
-
-			if (
-				initialState == CharacterState.Healthy &&
-				character.currentState == CharacterState.Infected
-			) {
-				character.Transmit();
-			}
 		}
 	}
 
