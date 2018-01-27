@@ -5,21 +5,33 @@ using Assets.UltimateIsometricToolkit.Scripts.Core;
 using System;
 
 
+public enum Stage {
+	Idle,
+	Transmitting,
+	Infecting
+}
+
+
+
 public class StageManager : MonoBehaviour {
 
-	public float tickInSeconds = 2.0f;
+	public float tickInSeconds = 1.0f;
 
-	public float transmissionInSeconds = 4.0f;
+	public float transmissionInSeconds = 1.0f;
+
+	public float infectionInSeconds = 1.0f;
 
 	public int transmissionTurns = 5;
 
-	private bool transmitting = false;
-
 	private Character[,] characters;
 
-	private float lastTimeUpdated = 0f;
+	public float lastTimeUpdated = 0f;
 
 	private Vector2Int[] directions;
+
+	private List<Character> infectedCharacters = new List<Character>();
+
+	private Stage currentStage = Stage.Idle;
 
 	// Use this for initialization
 	void Start () {
@@ -32,22 +44,28 @@ public class StageManager : MonoBehaviour {
 	void Update () {
 		lastTimeUpdated += Time.deltaTime;
 
-		if (transmitting) {
+		if (currentStage == Stage.Transmitting) {
 			if (lastTimeUpdated >= transmissionInSeconds) {
 				lastTimeUpdated = 0f;
 				FinishTranmissions();
 			}
 		}
-		else {
+		else if (currentStage == Stage.Idle) {
 			if (lastTimeUpdated >= tickInSeconds) {
 				lastTimeUpdated = 0f;
 				StageTurn();
 			}
 		}
+		else if (currentStage == Stage.Infecting) {
+			if (lastTimeUpdated >= infectionInSeconds) {
+				lastTimeUpdated = 0f;
+				FinishInfections();
+			}
+		}
 
 
 		// Input handling
-		if (!transmitting && Input.GetButtonDown("TriggerTransmission"))
+		if (currentStage == Stage.Idle && Input.GetButtonDown("TriggerTransmission"))
         {
 			lastTimeUpdated = 0f;
         	TransmissionTurn();
@@ -68,8 +86,24 @@ public class StageManager : MonoBehaviour {
 
 
 	private void FinishTranmissions() {
-		transmitting = false;
+		currentStage = Stage.Infecting;
 
+		EndTransmissions();
+
+		InfectCachedCharacters();
+	}
+
+
+	private void FinishInfections() {
+		currentStage = Stage.Idle;
+
+		EndTransmissions();
+
+		StageTurn();
+	}
+
+
+	private void EndTransmissions() {
 		for (int i = 0; i < characters.GetLength(0); i++) {
 			for (int j = 0; j < characters.GetLength(1); j++) {
 				Character character = characters[i, j];
@@ -79,14 +113,30 @@ public class StageManager : MonoBehaviour {
 				}
 			}
 		}
+	}
 
-		StageTurn();
+
+	private void InfectCachedCharacters() {
+		foreach (Character character in infectedCharacters) {
+			CharacterState initialState = character.currentState;
+
+			character.ReceiveTransmission(1);
+
+			if (
+				initialState == CharacterState.Healthy &&
+				character.currentState == CharacterState.Infected
+			) {
+				character.Transmit();
+			}
+		}
 	}
 
 
 	private void TransmissionTurn() {
+		currentStage = Stage.Transmitting;
 		transmissionTurns -= 1;
-		transmitting = true;
+
+		infectedCharacters.Clear();
 
 		for (int i = 0; i < characters.GetLength(0); i++) {
 			for (int j = 0; j < characters.GetLength(1); j++) {
@@ -128,7 +178,7 @@ public class StageManager : MonoBehaviour {
 		Character character = characters[position.x, position.y];
 
 		if (character && character.GetCharacterDirection() == direction) {
-			character.ReceiveTransmission(1);
+			infectedCharacters.Add(character);
 		}
 	}
 
