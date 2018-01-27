@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menus/LoseGame.unity
+    guid: d69fe2e11017c44658c850e8dfbfb0df
+  - enabled: 1
+    path: Assets/Scenes/Stages/Stage1.unity
+    guid: 4127bfbe45c6b44c09bf1cc8220029a9

@@ -617,7 +617,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tickInSeconds: 1
   transmissionInSeconds: 1
+  infectionInSeconds: 1
   transmissionTurns: 5
+  lastTimeUpdated: 0
 --- !u!114 &1231437212
 MonoBehaviour:
   m_ObjectHideFlags: 0
