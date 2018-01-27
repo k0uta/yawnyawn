@@ -232,9 +232,8 @@ GameObject:
   - component: {fileID: 875233495}
   - component: {fileID: 875233494}
   - component: {fileID: 875233493}
-  - component: {fileID: 875233496}
   m_Layer: 5
-  m_Name: Button
+  m_Name: RetryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -333,17 +332,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 875233491}
---- !u!114 &875233496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 875233491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 997a8ff23763f4e50b4d6046493a914f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1167654630
 GameObject:
   m_ObjectHideFlags: 0
