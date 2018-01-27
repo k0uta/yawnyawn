@@ -7,9 +7,13 @@ using System;
 
 public class StageManager : MonoBehaviour {
 
-	public float tickInSeconds = 1.0f;
+	public float tickInSeconds = 2.0f;
+
+	public float transmissionInSeconds = 4.0f;
 
 	public int transmissionTurns = 5;
+
+	private bool transmitting = false;
 
 	private Character[,] characters;
 
@@ -28,18 +32,28 @@ public class StageManager : MonoBehaviour {
 	void Update () {
 		lastTimeUpdated += Time.deltaTime;
 
-		if (lastTimeUpdated >= tickInSeconds) {
-			lastTimeUpdated = 0f;
-			StageTurn();
+		if (transmitting) {
+			if (lastTimeUpdated >= transmissionInSeconds) {
+				lastTimeUpdated = 0f;
+				FinishTranmissions();
+			}
+		}
+		else {
+			if (lastTimeUpdated >= tickInSeconds) {
+				lastTimeUpdated = 0f;
+				StageTurn();
+			}
 		}
 
 
 		// Input handling
-		if (Input.GetButtonDown("TriggerTransmission"))
+		if (!transmitting && Input.GetButtonDown("TriggerTransmission"))
         {
         	TransmissionTurn();
+			lastTimeUpdated = 0f;
         }
 	}
+
 
 	private void StageTurn() {
 		for (int i = 0; i < characters.GetLength(0); i++) {
@@ -53,7 +67,27 @@ public class StageManager : MonoBehaviour {
 	}
 
 
+	private void FinishTranmissions() {
+		transmitting = false;
+
+		for (int i = 0; i < characters.GetLength(0); i++) {
+			for (int j = 0; j < characters.GetLength(1); j++) {
+				Character character = characters[i, j];
+
+				if (character) {
+					character.EndTransmission();
+				}
+			}
+		}
+
+		StageTurn();
+	}
+
+
 	private void TransmissionTurn() {
+		transmissionTurns -= 1;
+		transmitting = true;
+
 		for (int i = 0; i < characters.GetLength(0); i++) {
 			for (int j = 0; j < characters.GetLength(1); j++) {
 				CheckCharacterTranssions(characters[i, j], new Vector2Int(i, j));
@@ -77,6 +111,7 @@ public class StageManager : MonoBehaviour {
 		}
 	}
 
+
 	private void tryTransmissionToPosition(Vector2Int position) {
 		Character character = characters[position.x, position.y];
 
@@ -87,7 +122,9 @@ public class StageManager : MonoBehaviour {
 
 
 	private void CheckForEndGame() {
-
+		if (transmissionTurns <= 0) {
+			TriggerLoseGame();
+		}
 	}
 
 
@@ -144,6 +181,7 @@ public class StageManager : MonoBehaviour {
 			characters[stageRows - gridPosition.y - 1, gridPosition.x] = character;
 		}
 	}
+
 
 	private void InitializeDirections() {
 		directions = new Vector2Int[4];
