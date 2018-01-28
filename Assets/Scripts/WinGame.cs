@@ -14,11 +14,6 @@ public class WinGame : MonoBehaviour {
 		transform.Find("RetryButton").GetComponent<Button>().onClick.AddListener(OnClickRetry);
 		transform.Find("MenuButton").GetComponent<Button>().onClick.AddListener(OnClickMenu);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	void OnClickRetry() {
 		GameManager.PlayCurrentStage();
