@@ -10,7 +10,7 @@ public class WinGame : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameOverText.text = "Game Over!\nYour Score: " + GameManager.currentScore;
+		gameOverText.text = "Stage Clear!\nYour Score: " + GameManager.currentScore;
 		transform.Find("RetryButton").GetComponent<Button>().onClick.AddListener(OnClickRetry);
 		transform.Find("MenuButton").GetComponent<Button>().onClick.AddListener(OnClickMenu);
 		transform.Find("NextButton").GetComponent<Button>().onClick.AddListener(OnClickNext);

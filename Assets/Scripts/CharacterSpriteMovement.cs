@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CharacterSpriteMovement : MonoBehaviour {
 
-	public string characterName = "nana";
-
 	public List<Sprite> healthySprites;
 
 	public List<Sprite> infectedSprites;
