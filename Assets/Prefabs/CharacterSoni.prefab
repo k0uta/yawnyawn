@@ -173,10 +173,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 322a4759bf8ec49239ef464af6d717df, type: 3}
   - {fileID: 21300000, guid: dd13f9623295441f6873e4d2825d55d6, type: 3}
   transmittingSprites:
-  - {fileID: 21300000, guid: d0495c4d6f3af4281b5c762824d8cdb4, type: 3}
-  - {fileID: 21300000, guid: 9073fb3e8d4914713a92d38d69413706, type: 3}
-  - {fileID: 21300000, guid: 5613efe2d0d1446e7b4aee4d00e3e525, type: 3}
-  - {fileID: 21300000, guid: 103667d3e4bdf43abb432caa2e9a87a7, type: 3}
+  - {fileID: 21300000, guid: f4c6ea6058b5f421abf9dcb37c0a5391, type: 3}
+  - {fileID: 21300000, guid: 90a8a240ee0fc40659f14fd75644e720, type: 3}
+  - {fileID: 21300000, guid: 322a4759bf8ec49239ef464af6d717df, type: 3}
+  - {fileID: 21300000, guid: dd13f9623295441f6873e4d2825d55d6, type: 3}
   deadSprites:
   - {fileID: 21300000, guid: f4c6ea6058b5f421abf9dcb37c0a5391, type: 3}
   - {fileID: 21300000, guid: 90a8a240ee0fc40659f14fd75644e720, type: 3}
