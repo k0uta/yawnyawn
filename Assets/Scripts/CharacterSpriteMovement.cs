@@ -11,7 +11,7 @@ public class CharacterSpriteMovement : MonoBehaviour {
 
 	public List<Sprite> infectedSprites;
 
-	public List<Sprite> transmitingSprites;
+	public List<Sprite> transmittingSprites;
 
 	public List<Sprite> deadSprites;
 
@@ -27,7 +27,7 @@ public class CharacterSpriteMovement : MonoBehaviour {
 		spriteListByState = new Dictionary<CharacterState, List<Sprite>>();
 		spriteListByState.Add(CharacterState.Healthy, healthySprites);
 		spriteListByState.Add(CharacterState.Infected, infectedSprites);
-		spriteListByState.Add(CharacterState.Transmiting, transmitingSprites);
+		spriteListByState.Add(CharacterState.Transmitting, transmittingSprites);
 		spriteListByState.Add(CharacterState.Dead, deadSprites);
 
 		spriteRenderer = GetComponent<SpriteRenderer>();
