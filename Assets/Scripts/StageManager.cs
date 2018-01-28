@@ -48,10 +48,17 @@ public class StageManager : MonoBehaviour {
 
 	private Stage currentStage = Stage.Intro;
 
+	AudioSource audioSource;
+
+	public AudioClip backgroundSound;
+
+
 	// Use this for initialization
 	void Start () {
 		inspector = GameObject.FindGameObjectWithTag("Inspector").GetComponent<Inspector>();
 
+		InitializeBackground();
+		
 		InitializeGrid();
 
 		InitializeDirections();
@@ -317,6 +324,15 @@ public class StageManager : MonoBehaviour {
 		directions[(int)CharacterDirection.Down] = new Vector2Int(1, 0);
 	}
 
+	private void InitializeBackground() {
+		audioSource = GetComponent<AudioSource>();	
+
+		audioSource.clip = backgroundSound;
+
+		audioSource.loop = true;
+
+		audioSource.Play();
+	}
 
 	private void removeTransmissionTurn(int num) {
 		transmissionTurns -= num;

@@ -16,6 +16,9 @@ public class Menu : MonoBehaviour {
 
 	public float yOffset = -60f;
 
+	AudioSource audioSource;
+
+	public AudioClip backgroundSound;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +27,8 @@ public class Menu : MonoBehaviour {
 		transform.Find("TutorialButton").GetComponent<Button>().onClick.AddListener(OnClickTutorial);
 
 		GameManager.SetMaxStages(stagesCount);
+
+		InitializeBackground();
 	}
 
 	void OnClickTutorial() {
@@ -48,5 +53,15 @@ public class Menu : MonoBehaviour {
 
 			stageButton.InitStageNum(i + 1);
 		}
+	}
+
+	private void InitializeBackground() {
+		audioSource = GetComponent<AudioSource>();	
+
+		audioSource.clip = backgroundSound;
+
+		audioSource.loop = true;
+
+		audioSource.Play();
 	}
 }
