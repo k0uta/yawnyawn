@@ -33,4 +33,9 @@ public class GameManager : MonoBehaviour {
 		SceneManager.LoadScene("Scenes/Stages/Stage" + currentStage);
 		ResetScore();
 	}
+
+	public static void PlayStage(int stageNum) {
+		currentStage = stageNum;
+		PlayCurrentStage();
+	}
 }
