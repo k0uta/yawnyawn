@@ -46,12 +46,21 @@ public class Character : MonoBehaviour {
 
 	private CharacterSpriteMovement characterSpriteMovement;
 
+
+	public List<AudioClip> yawnSounds;
+    
+	AudioSource audioSource;
+
+
+
+
 	// Use this for initialization
 	void Start() {
 		currentHealth = health;
 		ResetInfection();
 		characterSpriteMovement = GetComponentInChildren<CharacterSpriteMovement>();
 
+        audioSource = GetComponent<AudioSource>();		
 
 		ChangeState(currentState);
 	}
@@ -84,6 +93,9 @@ public class Character : MonoBehaviour {
 
 			if (currentState == CharacterState.Infected) {
 				ChangeState(CharacterState.Transmitting, true);
+
+				AudioClip randomYawn = yawnSounds[Random.Range(0, yawnSounds.Count)];
+				audioSource.PlayOneShot(randomYawn, 1);
 
 				GameManager.addScore(bounty);
 			}

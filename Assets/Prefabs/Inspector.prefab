@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 212199489533366234}
   - component: {fileID: 114339459075957776}
   - component: {fileID: 114180915219930476}
+  - component: {fileID: 82569783710789492}
   m_Layer: 0
   m_Name: Inspector
   m_TagString: Inspector
@@ -48,7 +49,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4461644279476536
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1254701784401520}
@@ -73,6 +74,86 @@ Transform:
   m_Father: {fileID: 4461644279476536}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82569783710789492
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1254701784401520}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114041558695024804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,6 +201,10 @@ MonoBehaviour:
   minInspectingTurns: 1
   maxInspectingTurns: 3
   currentState: 3
+  idleSound: {fileID: 8300000, guid: 4f92a48808106489cb0e10e16cdc6b9a, type: 3}
+  suspiciousSound: {fileID: 8300000, guid: 2da28b60e768345b8836a6c573b65b33, type: 3}
+  inspectingSound: {fileID: 8300000, guid: edee9fe1225224658aca4b58bf210f52, type: 3}
+  angrySound: {fileID: 8300000, guid: c36aee888dfe04b5388f4f0939adb060, type: 3}
   turnPenalty: 2
 --- !u!212 &212091014861440222
 SpriteRenderer:
