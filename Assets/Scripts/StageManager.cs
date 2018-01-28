@@ -36,6 +36,8 @@ public class StageManager : MonoBehaviour {
 
 	public Text scoreText;
 
+	public Clock clock;
+
 	private Character[,] characters;
 
 	private Inspector inspector;
@@ -58,7 +60,7 @@ public class StageManager : MonoBehaviour {
 		inspector = GameObject.FindGameObjectWithTag("Inspector").GetComponent<Inspector>();
 
 		InitializeBackground();
-		
+
 		InitializeGrid();
 
 		InitializeDirections();
@@ -133,6 +135,8 @@ public class StageManager : MonoBehaviour {
 		}
 
 		inspector.Move();
+
+		clock.Tick();
 	}
 
 
@@ -150,6 +154,8 @@ public class StageManager : MonoBehaviour {
 		else {
 			InfectCachedCharacters();
 		}
+
+		clock.Tick();
 	}
 
 
@@ -325,7 +331,7 @@ public class StageManager : MonoBehaviour {
 	}
 
 	private void InitializeBackground() {
-		audioSource = GetComponent<AudioSource>();	
+		audioSource = GetComponent<AudioSource>();
 
 		audioSource.clip = backgroundSound;
 
