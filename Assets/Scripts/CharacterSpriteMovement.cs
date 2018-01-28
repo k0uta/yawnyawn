@@ -15,6 +15,8 @@ public class CharacterSpriteMovement : MonoBehaviour {
 
 	public SpriteRenderer yawnSprite;
 
+	private SpriteRenderer infectedTile;
+
 	private Dictionary<CharacterState, List<Sprite>> spriteListByState;
 
 	private SpriteRenderer spriteRenderer;
@@ -29,6 +31,8 @@ public class CharacterSpriteMovement : MonoBehaviour {
 		spriteListByState.Add(CharacterState.Dead, deadSprites);
 
 		spriteRenderer = GetComponent<SpriteRenderer>();
+
+		infectedTile = transform.Find("InfectedTile").GetComponent<SpriteRenderer>();
 	}
 
 	// Update is called once per frame
@@ -41,5 +45,7 @@ public class CharacterSpriteMovement : MonoBehaviour {
 		spriteRenderer.sprite = newSprite;
 
 		yawnSprite.enabled = showYawn;
+
+		infectedTile.enabled = (characterState != CharacterState.Healthy);
 	}
 }
