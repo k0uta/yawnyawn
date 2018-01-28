@@ -4,6 +4,7 @@ using UnityEngine;
 using Assets.UltimateIsometricToolkit.Scripts.Core;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
 
 
 public enum Stage {
@@ -26,11 +27,15 @@ public class StageManager : MonoBehaviour {
 
 	public int transmissionTurns = 5;
 
+	public Text turnsText;
+
+	public Text scoreText;
+
 	private Character[,] characters;
 
 	private Inspector inspector;
 
-	public float lastTimeUpdated = 0f;
+	private float lastTimeUpdated = 0f;
 
 	private Vector2Int[] directions;
 
@@ -45,6 +50,9 @@ public class StageManager : MonoBehaviour {
 		InitializeGrid();
 
 		InitializeDirections();
+
+		turnsText.text = transmissionTurns.ToString();
+		scoreText.text = GameManager.GetScore().ToString();
 	}
 
 	// Update is called once per frame
@@ -104,11 +112,12 @@ public class StageManager : MonoBehaviour {
 		currentStage = Stage.Infecting;
 
 		EndTransmissions();
-		if (inspector.currentState == InspectorState.Inspecting){
-				transmissionTurns -= inspector.turnPenalty;
-				inspector.triggerPenalty();
+
+		if (inspector.currentState == InspectorState.Inspecting) {
+			removeTransmissionTurn(inspector.turnPenalty);
+			inspector.triggerPenalty();
 		}
-		else{
+		else {
 			InfectCachedCharacters();
 		}
 	}
@@ -141,13 +150,15 @@ public class StageManager : MonoBehaviour {
 	private void InfectCachedCharacters() {
 		foreach (Character character in infectedCharacters) {
 			character.ReceiveTransmission(1);
+
+			scoreText.text = GameManager.GetScore().ToString();
 		}
 	}
 
 
 	private void TransmissionTurn() {
 		currentStage = Stage.Transmitting;
-		transmissionTurns -= 1;
+		removeTransmissionTurn(1);
 
 		infectedCharacters.Clear();
 
@@ -277,6 +288,12 @@ public class StageManager : MonoBehaviour {
 		directions[(int)CharacterDirection.Left] = new Vector2Int(0, -1);
 		directions[(int)CharacterDirection.Up] = new Vector2Int(-1, 0);
 		directions[(int)CharacterDirection.Down] = new Vector2Int(1, 0);
+	}
+
+
+	private void removeTransmissionTurn(int num) {
+		transmissionTurns -= num;
+		turnsText.text = transmissionTurns.ToString();
 	}
 
 

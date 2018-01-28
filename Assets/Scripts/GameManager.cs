@@ -7,9 +7,7 @@ public class GameManager : MonoBehaviour {
 
 	public static int currentStage = 1;
 
-	public static float currentScore;
-
-	public static int totalStages = 5;
+	public static int currentScore;
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +24,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public static void ResetScore() {
-		currentScore = 0f;
+		currentScore = 0;
 	}
 
 	public static void PlayCurrentStage() {
@@ -37,5 +35,9 @@ public class GameManager : MonoBehaviour {
 	public static void PlayStage(int stageNum) {
 		currentStage = stageNum;
 		PlayCurrentStage();
+	}
+
+	public static int GetScore() {
+		return GameManager.currentScore;
 	}
 }
