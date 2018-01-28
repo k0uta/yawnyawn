@@ -77,7 +77,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4763086894841278
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834374540377064}
@@ -166,7 +166,7 @@ MonoBehaviour:
   infectionResistance: 1
   transmissionRange: 2
   infectionDuration: 2147483647
-  health: 2147483647
+  health: -1
   currentState: 0
 --- !u!212 &212055365221608076
 SpriteRenderer:

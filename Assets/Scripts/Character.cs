@@ -24,13 +24,15 @@ public class Character : MonoBehaviour {
 
 	private int currentDirectionIndex = 0;
 
+	[Range(1, 4)]
 	public int infectionResistance = 1;
 
 	public int transmissionRange = 1;
 
 	public int infectionDuration = int.MaxValue;
 
-	public int health = int.MaxValue;
+	[Range(-1, 4)]
+	public int health = -1;
 
 	public CharacterState currentState = CharacterState.Healthy;
 
@@ -101,7 +103,7 @@ public class Character : MonoBehaviour {
 	}
 
 	protected void CheckForCurrentState() {
-		if (currentHealth <= 0 && currentState == CharacterState.Infected) {
+		if (currentHealth == 0 && currentState == CharacterState.Infected) {
 			Die();
 		}
 		else if (currentInfectionDuration <= 0 && currentState == CharacterState.Infected) {
