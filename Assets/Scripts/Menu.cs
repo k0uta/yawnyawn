@@ -8,6 +8,8 @@ public class Menu : MonoBehaviour {
 
 	public int stagesCount = 5;
 
+	public int stagesPerLine = 3;
+
 	public GameObject buttonPrefab;
 
 	public float xOffset = 100f;
@@ -35,8 +37,8 @@ public class Menu : MonoBehaviour {
 
 			stageButton.transform.SetParent(transform);
 			stageButton.transform.localPosition = new Vector3(
-				startingPosition.x + (i % 2) * xOffset,
-				startingPosition.y + Mathf.FloorToInt(i / 2) * yOffset,
+				startingPosition.x + (i % stagesPerLine) * xOffset,
+				startingPosition.y + Mathf.FloorToInt(i / stagesPerLine) * yOffset,
 				startingPosition.z
 			);
 
