@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 
 public enum Stage {
+	Intro,
 	Idle,
 	Transmitting,
 	Infecting
@@ -25,7 +26,11 @@ public class StageManager : MonoBehaviour {
 
 	public float infectionInSeconds = 1.0f;
 
+	public float introInSeconds = 2.5f;
+
 	public int transmissionTurns = 5;
+
+	public Image introImage;
 
 	public Text turnsText;
 
@@ -41,25 +46,40 @@ public class StageManager : MonoBehaviour {
 
 	private List<Character> infectedCharacters = new List<Character>();
 
-	private Stage currentStage = Stage.Idle;
+	private Stage currentStage = Stage.Intro;
+
+	AudioSource audioSource;
+
+	public AudioClip backgroundSound;
+
 
 	// Use this for initialization
 	void Start () {
 		inspector = GameObject.FindGameObjectWithTag("Inspector").GetComponent<Inspector>();
 
+		InitializeBackground();
+		
 		InitializeGrid();
 
 		InitializeDirections();
 
 		turnsText.text = transmissionTurns.ToString();
 		scoreText.text = GameManager.GetScore().ToString();
+
+		introImage.enabled = true;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		lastTimeUpdated += Time.deltaTime;
 
-		if (inspector.currentState == InspectorState.Triggered){
+		if (currentStage == Stage.Intro){
+			if (lastTimeUpdated >= introInSeconds) {
+				lastTimeUpdated = 0f;
+				FinishIntro();
+			}
+		}
+		else if (inspector.currentState == InspectorState.Triggered){
 			if (lastTimeUpdated >= turnPenaltyInSeconds) {
 				lastTimeUpdated = 0f;
 				inspector.updateState();
@@ -96,6 +116,11 @@ public class StageManager : MonoBehaviour {
         }
 	}
 
+	private void FinishIntro() {
+		introImage.enabled = false;
+		currentStage = Stage.Idle;
+	}
+
 
 	private void StageTurn() {
 		for (int i = 0; i < characters.GetLength(0); i++) {
@@ -119,6 +144,8 @@ public class StageManager : MonoBehaviour {
 		if (inspector.currentState == InspectorState.Inspecting) {
 			removeTransmissionTurn(inspector.turnPenalty);
 			inspector.triggerPenalty();
+			inspector.playSound(inspector.angrySound);
+
 		}
 		else {
 			InfectCachedCharacters();
@@ -297,6 +324,15 @@ public class StageManager : MonoBehaviour {
 		directions[(int)CharacterDirection.Down] = new Vector2Int(1, 0);
 	}
 
+	private void InitializeBackground() {
+		audioSource = GetComponent<AudioSource>();	
+
+		audioSource.clip = backgroundSound;
+
+		audioSource.loop = true;
+
+		audioSource.Play();
+	}
 
 	private void removeTransmissionTurn(int num) {
 		transmissionTurns -= num;
