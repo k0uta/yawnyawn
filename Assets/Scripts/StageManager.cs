@@ -270,6 +270,7 @@ public class StageManager : MonoBehaviour {
 			}
 		}
 
+		GameManager.addScore(transmissionTurns);
 		SceneManager.LoadScene("Scenes/Menus/WinGame");
 
 		return true;
