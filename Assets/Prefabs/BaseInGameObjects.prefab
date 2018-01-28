@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 114027340590891012}
   - component: {fileID: 114239843552408198}
   - component: {fileID: 114999386101806650}
+  - component: {fileID: 82121825528643628}
   m_Layer: 0
   m_Name: Stage
   m_TagString: Untagged
@@ -414,6 +415,86 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1184312761108134}
   m_Enabled: 1
+--- !u!82 &82121825528643628
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522015796197686}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!82 &82341767783317498
 AudioSource:
   m_ObjectHideFlags: 1
@@ -506,7 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortingStrategy: {fileID: 114239843552408198}
-  Dirty: 0
+  Dirty: 1
   _isoAngle: 26.565
   _xRot: 35.625
   _yRot: 45
@@ -615,8 +696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f9a56e2762254c68ae05bca89d20d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minIdleTurns: 1000000
-  maxIdleTurns: 1000000
+  minIdleTurns: 100000
+  maxIdleTurns: 100000
   minInspectingTurns: 1
   maxInspectingTurns: 1
   currentState: 0
@@ -999,6 +1080,7 @@ MonoBehaviour:
   transmissionTurns: 5
   turnsText: {fileID: 114891556021066790}
   scoreText: {fileID: 114532728764383400}
+  backgroundSound: {fileID: 8300000, guid: dee87224e8dc34159a6d000afbfa953b, type: 3}
 --- !u!124 &124163302071053906
 Behaviour:
   m_ObjectHideFlags: 1
