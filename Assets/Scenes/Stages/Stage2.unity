@@ -472,6 +472,16 @@ Prefab:
       propertyPath: transmissionTurns
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114180959201115858, guid: ea1db56cee3024ce78a9cfbc356baf37,
+        type: 2}
+      propertyPath: minIdleTurns
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114180959201115858, guid: ea1db56cee3024ce78a9cfbc356baf37,
+        type: 2}
+      propertyPath: maxIdleTurns
+      value: 1000000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea1db56cee3024ce78a9cfbc356baf37, type: 2}
   m_IsPrefabParent: 0
