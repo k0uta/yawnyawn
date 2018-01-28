@@ -86,8 +86,11 @@ public class StageManager : MonoBehaviour {
 
 
 		// Input handling
-		if (currentStage == Stage.Idle && Input.GetButtonDown("TriggerTransmission"))
-        {
+		if (
+			currentStage == Stage.Idle &&
+			Input.GetButtonDown("TriggerTransmission") &&
+			!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()
+		) {
 			lastTimeUpdated = 0f;
         	TransmissionTurn();
         }
