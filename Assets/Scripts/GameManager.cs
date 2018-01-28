@@ -15,10 +15,14 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		ResetScore();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
+	}
+
+	public static void addScore(int num) {
+		currentScore += num;
 	}
 
 	public static void ResetScore() {

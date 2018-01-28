@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.UltimateIsometricToolkit.Scripts.Core;
+using UnityEngine.SceneManagement;
 using System;
 
 
@@ -53,7 +54,7 @@ public class StageManager : MonoBehaviour {
 		if (inspector.currentState == InspectorState.Triggered){
 			if (lastTimeUpdated >= turnPenaltyInSeconds) {
 				lastTimeUpdated = 0f;
-				inspector.updateState();				
+				inspector.updateState();
 			}
 		}
 		else if (currentStage == Stage.Transmitting) {
@@ -118,6 +119,8 @@ public class StageManager : MonoBehaviour {
 
 		EndTransmissions();
 
+		CheckForEndGame();
+
 		StageTurn();
 	}
 
@@ -137,8 +140,6 @@ public class StageManager : MonoBehaviour {
 
 	private void InfectCachedCharacters() {
 		foreach (Character character in infectedCharacters) {
-			CharacterState initialState = character.currentState;
-
 			character.ReceiveTransmission(1);
 		}
 	}
@@ -193,19 +194,34 @@ public class StageManager : MonoBehaviour {
 
 
 	private void CheckForEndGame() {
+		if (CheckWinGame())
+			return;
+
+		CheckLoseGame();
+	}
+
+
+	private void CheckLoseGame() {
 		if (transmissionTurns <= 0) {
-			TriggerLoseGame();
+			SceneManager.LoadScene("Scenes/Menus/LoseGame");
 		}
 	}
 
 
-	private void TriggerLoseGame() {
+	private bool CheckWinGame() {
+		for (int i = 0; i < characters.GetLength(0); i++) {
+			for (int j = 0; j < characters.GetLength(1); j++) {
+				Character character = characters[i, j];
 
-	}
+				if (character && character.currentState == CharacterState.Healthy) {
+					return false;
+				}
+			}
+		}
 
+		SceneManager.LoadScene("Scenes/Menus/WinGame");
 
-	private void TriggerWinGame() {
-
+		return true;
 	}
 
 

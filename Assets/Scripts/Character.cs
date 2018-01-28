@@ -18,6 +18,8 @@ public enum CharacterState {
 
 public class Character : MonoBehaviour {
 
+	public int bounty = 1;
+
 	public List<CharacterDirection> peekDirections = new List<CharacterDirection>();
 
 	public int currentDirectionIndex = 0;
@@ -81,6 +83,8 @@ public class Character : MonoBehaviour {
 
 			if (currentState == CharacterState.Infected) {
 				ChangeState(CharacterState.Transmiting, true);
+
+				GameManager.addScore(bounty);
 			}
 		}
 	}
