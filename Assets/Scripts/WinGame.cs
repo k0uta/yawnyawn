@@ -13,10 +13,15 @@ public class WinGame : MonoBehaviour {
 		gameOverText.text = "Game Over!\nYour Score: " + GameManager.currentScore;
 		transform.Find("RetryButton").GetComponent<Button>().onClick.AddListener(OnClickRetry);
 		transform.Find("MenuButton").GetComponent<Button>().onClick.AddListener(OnClickMenu);
+		transform.Find("NextButton").GetComponent<Button>().onClick.AddListener(OnClickNext);
 	}
 
 	void OnClickRetry() {
 		GameManager.PlayCurrentStage();
+	}
+
+	void OnClickNext() {
+		GameManager.PlayNextStage();
 	}
 
 	void OnClickMenu() {

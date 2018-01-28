@@ -22,6 +22,8 @@ public class Menu : MonoBehaviour {
 		InitializeStageButtons();
 
 		transform.Find("TutorialButton").GetComponent<Button>().onClick.AddListener(OnClickTutorial);
+
+		GameManager.SetMaxStages(stagesCount);
 	}
 
 	void OnClickTutorial() {

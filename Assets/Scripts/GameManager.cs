@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
 
 	public static int currentScore;
 
+	public static int maxStages = 0;
+
 	// Use this for initialization
 	void Start () {
 		ResetScore();
@@ -32,12 +34,28 @@ public class GameManager : MonoBehaviour {
 		ResetScore();
 	}
 
+	public static void PlayNextStage() {
+		currentStage += 1;
+
+		if (currentStage > maxStages) {
+			currentStage = 1;
+			SceneManager.LoadScene("Scenes/Menus/Menu");
+			return;
+		}
+
+		PlayCurrentStage();
+	}
+
 	public static void PlayStage(int stageNum) {
 		currentStage = stageNum;
 		PlayCurrentStage();
 	}
 
 	public static int GetScore() {
-		return GameManager.currentScore;
+		return currentScore;
+	}
+
+	public static void SetMaxStages(int max) {
+		maxStages = max;
 	}
 }
