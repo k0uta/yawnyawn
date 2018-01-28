@@ -24,7 +24,7 @@ public class Character : MonoBehaviour {
 
 	private int currentDirectionIndex = 0;
 
-	[Range(1, 4)]
+	[Range(0, 4)]
 	public int infectionResistance = 1;
 
 	public int transmissionRange = 1;
