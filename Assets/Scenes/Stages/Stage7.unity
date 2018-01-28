@@ -900,6 +900,21 @@ Prefab:
       propertyPath: health
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 82554245871938158, guid: 0b79a829ef8df41258e149c876fb46a3,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82554245871938158, guid: 0b79a829ef8df41258e149c876fb46a3,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82554245871938158, guid: 0b79a829ef8df41258e149c876fb46a3,
+        type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b79a829ef8df41258e149c876fb46a3, type: 2}
   m_IsPrefabParent: 0
