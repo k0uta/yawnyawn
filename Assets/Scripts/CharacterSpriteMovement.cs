@@ -21,6 +21,8 @@ public class CharacterSpriteMovement : MonoBehaviour {
 
 	private SpriteRenderer spriteRenderer;
 
+	private int maxItemSlots = 3;
+
 
 	// Use this for initialization
 	void Awake () {
@@ -47,5 +49,29 @@ public class CharacterSpriteMovement : MonoBehaviour {
 		yawnSprite.enabled = showYawn;
 
 		infectedTile.enabled = (characterState != CharacterState.Healthy);
+
+		for (int i = 1; i <= maxItemSlots; i++) {
+			Transform itemSlot = transform.Find("ItemSlot" + i);
+			SpriteRenderer coffeRenderer = itemSlot.Find("Coffee").GetComponent<SpriteRenderer>();
+			SpriteRenderer energyDrinkRenderer = itemSlot.Find("EnergyDrink").GetComponent<SpriteRenderer>();
+			coffeRenderer.enabled = false;
+			energyDrinkRenderer.enabled = false;
+		}
+
+		int currentSlot = 1;
+
+		for (int i = 0; i < coffeeCups; i++) {
+			Transform itemSlot = transform.Find("ItemSlot" + currentSlot);
+			SpriteRenderer coffeRenderer = itemSlot.Find("Coffee").GetComponent<SpriteRenderer>();
+			coffeRenderer.enabled = true;
+			currentSlot++;
+		}
+
+		for (int i = 0; i < energyDrinks; i++) {
+			Transform itemSlot = transform.Find("ItemSlot" + currentSlot);
+			SpriteRenderer energyDrinkRenderer = itemSlot.Find("EnergyDrink").GetComponent<SpriteRenderer>();
+			energyDrinkRenderer.enabled = true;
+			currentSlot++;
+		}
 	}
 }

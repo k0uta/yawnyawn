@@ -31,7 +31,7 @@ public class Character : MonoBehaviour {
 
 	public int infectionDuration = int.MaxValue;
 
-	[Range(-1, 4)]
+	[Range(-1, 3)]
 	public int health = -1;
 
 	public CharacterState currentState = CharacterState.Healthy;
@@ -138,7 +138,7 @@ public class Character : MonoBehaviour {
 
 	public void ChangeState(CharacterState characterState, bool showYawn) {
 		currentState = characterState;
-		characterSpriteMovement.ChangeState(currentState, GetCharacterDirection(), showYawn, currentInfectionResistance, currentHealth);
+		characterSpriteMovement.ChangeState(currentState, GetCharacterDirection(), showYawn, currentHealth, currentInfectionResistance - 1);
 	}
 
 
