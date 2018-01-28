@@ -297,6 +297,7 @@ public class StageManager : MonoBehaviour {
 
 	private void removeTransmissionTurn(int num) {
 		transmissionTurns -= num;
+		transmissionTurns = Mathf.Max(transmissionTurns, 0);
 		turnsText.text = transmissionTurns.ToString();
 	}
 

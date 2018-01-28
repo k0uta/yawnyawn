@@ -17,7 +17,7 @@ public class Inspector : MonoBehaviour {
 	public int maxInspectingTurns;
 
 	private int remainingTurns;
-	
+
 	public InspectorState currentState;
 
 	private InspectorSpriteMovement inspectorSpriteMovement;
@@ -30,18 +30,17 @@ public class Inspector : MonoBehaviour {
 
 		inspectorSpriteMovement = GetComponentInChildren<InspectorSpriteMovement>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	public virtual void Move() {
-		if (remainingTurns == 0) {
+		remainingTurns--;
+
+		if (remainingTurns <= 0) {
 			updateState();
-		}
-		else {
-			remainingTurns--;
 		}
 	}
 
@@ -49,19 +48,19 @@ public class Inspector : MonoBehaviour {
 		if (currentState == InspectorState.Idle) {
 			currentState = InspectorState.Suspicious;
 			inspectorSpriteMovement.ChangeState(currentState);
-			
+
 			remainingTurns = 1;
 		}
 		else if (currentState == InspectorState.Suspicious) {
 			currentState = InspectorState.Inspecting;
 			inspectorSpriteMovement.ChangeState(currentState);
 
-			remainingTurns = (int)Random.Range(minInspectingTurns, maxInspectingTurns);	
+			remainingTurns = (int)Random.Range(minInspectingTurns, maxInspectingTurns);
 		}
 		else {
 			currentState = InspectorState.Idle;
 			inspectorSpriteMovement.ChangeState(currentState);
-			
+
 			remainingTurns = (int)Random.Range(minIdleTurns, maxIdleTurns);
 		}
 	}
