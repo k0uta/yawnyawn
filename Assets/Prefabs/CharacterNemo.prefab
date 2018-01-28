@@ -106,7 +106,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4763086894841278
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834374540377064}
@@ -159,27 +159,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121107307ef53492c93ed688b3145165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: nana
   healthySprites:
-  - {fileID: 21300000, guid: 9c4c61e3eddc34b5ab84e5a7f648ce9c, type: 3}
-  - {fileID: 21300000, guid: c67c2a3cc23f54c9585b5f58081c65a7, type: 3}
-  - {fileID: 21300000, guid: ddf63f77df7f0484095e0f5d84fb15a5, type: 3}
-  - {fileID: 21300000, guid: fd36ee2a5f74b4f2486984ef927c17ca, type: 3}
+  - {fileID: 21300000, guid: 66edd7f413a9e4845bae1582fbdc8868, type: 3}
+  - {fileID: 21300000, guid: 667ae6b9024bb467fa1a2e5e4f0b2cf3, type: 3}
+  - {fileID: 21300000, guid: 6da76bfc6a8144fd9a89ea4cf40a4999, type: 3}
+  - {fileID: 21300000, guid: fc7d8c38a1fab49b7aeca88e370f6b02, type: 3}
   infectedSprites:
-  - {fileID: 21300000, guid: 35f67ebb503d146a48799df42c9ebc43, type: 3}
-  - {fileID: 21300000, guid: 1e5e540b511114b029715c2a07404862, type: 3}
-  - {fileID: 21300000, guid: c6d7f0dfadac04ced996f77d4a48ea8c, type: 3}
-  - {fileID: 21300000, guid: ea4cfabff20c0484ca3e238a82b9b3be, type: 3}
+  - {fileID: 21300000, guid: f42954e3c61484ceb8cf2139919fe079, type: 3}
+  - {fileID: 21300000, guid: f151f166092fc42239b5302df028cdb2, type: 3}
+  - {fileID: 21300000, guid: 66461f2d6ad7f4053bbc1ba1c299b6e2, type: 3}
+  - {fileID: 21300000, guid: ff01de2f998cf4f9c8e6d485d69c8f98, type: 3}
   transmittingSprites:
-  - {fileID: 21300000, guid: d0495c4d6f3af4281b5c762824d8cdb4, type: 3}
-  - {fileID: 21300000, guid: 9073fb3e8d4914713a92d38d69413706, type: 3}
-  - {fileID: 21300000, guid: 5613efe2d0d1446e7b4aee4d00e3e525, type: 3}
-  - {fileID: 21300000, guid: 103667d3e4bdf43abb432caa2e9a87a7, type: 3}
+  - {fileID: 21300000, guid: d876be531474e487cbaa7262005b221c, type: 3}
+  - {fileID: 21300000, guid: 3654711b0f1324927b55b08b2ebf483b, type: 3}
+  - {fileID: 21300000, guid: 94bd23732ee4f409e84bb7a9cf4b44a3, type: 3}
+  - {fileID: 21300000, guid: 7bf7223df3d274dd991bf7b49b9ee9ab, type: 3}
   deadSprites:
-  - {fileID: 21300000, guid: fffbc962a649b43b58a326cfedefac3b, type: 3}
-  - {fileID: 21300000, guid: fffbc962a649b43b58a326cfedefac3b, type: 3}
-  - {fileID: 21300000, guid: fffbc962a649b43b58a326cfedefac3b, type: 3}
-  - {fileID: 21300000, guid: fffbc962a649b43b58a326cfedefac3b, type: 3}
+  - {fileID: 21300000, guid: 7b4d4dbb144ae4b08a83f2ffda413463, type: 3}
+  - {fileID: 21300000, guid: 7b4d4dbb144ae4b08a83f2ffda413463, type: 3}
+  - {fileID: 21300000, guid: 7b4d4dbb144ae4b08a83f2ffda413463, type: 3}
+  - {fileID: 21300000, guid: 7b4d4dbb144ae4b08a83f2ffda413463, type: 3}
   yawnSprite: {fileID: 212055365221608076}
 --- !u!114 &114997188709748268
 MonoBehaviour:
@@ -365,7 +364,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ddf63f77df7f0484095e0f5d84fb15a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6da76bfc6a8144fd9a89ea4cf40a4999, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
