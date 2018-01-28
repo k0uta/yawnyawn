@@ -13,7 +13,7 @@ public enum CharacterState {
 	Healthy,
 	Infected,
 	Dead,
-	Transmiting
+	Transmitting
 }
 
 public class Character : MonoBehaviour {
@@ -77,12 +77,12 @@ public class Character : MonoBehaviour {
 	}
 
 	public virtual void ReceiveTransmission(int transmissionIntensity) {
-		if(currentState == CharacterState.Healthy) {
+		if (currentState == CharacterState.Healthy) {
 			currentInfectionResistance -= transmissionIntensity;
 			CheckForCurrentState();
 
 			if (currentState == CharacterState.Infected) {
-				ChangeState(CharacterState.Transmiting, true);
+				ChangeState(CharacterState.Transmitting, true);
 
 				GameManager.addScore(bounty);
 			}
@@ -96,19 +96,23 @@ public class Character : MonoBehaviour {
 			CheckForCurrentState();
 
 			if (currentState != CharacterState.Dead) {
-				ChangeState(CharacterState.Transmiting);
+				ChangeState(CharacterState.Transmitting);
 			}
 		}
 	}
 
 	protected void CheckForCurrentState() {
-		if(currentHealth <= 0) {
+		if (currentHealth <= 0 && currentState == CharacterState.Infected) {
 			Die();
 		}
-		else if(currentInfectionDuration <= 0) {
+		else if (currentInfectionDuration <= 0 && currentState == CharacterState.Infected) {
 			EndInfection();
 		}
-		else if(currentInfectionResistance <= 0 && currentState != CharacterState.Infected) {
+		else if (
+			currentInfectionResistance <= 0 &&
+			currentState != CharacterState.Infected &&
+			currentState != CharacterState.Dead
+		) {
 			Infect();
 		}
 	}

@@ -150,11 +150,11 @@ MonoBehaviour:
   bounty: 1
   peekDirections: 020000000000000002000000020000000000000001000000
   currentDirectionIndex: 0
-  infectionResistance: 0
+  infectionResistance: 1
   transmissionRange: 1
   infectionDuration: 2147483647
   health: 2147483647
-  currentState: 1
+  currentState: 0
 --- !u!114 &114906301912509768
 MonoBehaviour:
   m_ObjectHideFlags: 1

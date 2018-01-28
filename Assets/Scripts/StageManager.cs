@@ -176,6 +176,10 @@ public class StageManager : MonoBehaviour {
 
 		character.Transmit();
 
+		if (character.currentState != CharacterState.Transmitting) {
+			return;
+		}
+
 		for (int i = 0; i < directions.Length; i++) {
 			Vector2Int direction = directions[i];
 			CharacterDirection directionName = GetOppositeDirection(i);
