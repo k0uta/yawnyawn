@@ -22,7 +22,7 @@ public class Character : MonoBehaviour {
 
 	public List<CharacterDirection> peekDirections = new List<CharacterDirection>();
 
-	public int currentDirectionIndex = 0;
+	private int currentDirectionIndex = 0;
 
 	public int infectionResistance = 1;
 
@@ -49,12 +49,11 @@ public class Character : MonoBehaviour {
 		currentHealth = health;
 		ResetInfection();
 		characterSpriteMovement = GetComponentInChildren<CharacterSpriteMovement>();
+
+
+		ChangeState(currentState);
 	}
 
-	// Update is called once per frame
-	void Update() {
-
-	}
 
 	public virtual void Move() {
 		currentDirectionIndex++;
@@ -62,7 +61,7 @@ public class Character : MonoBehaviour {
 			currentDirectionIndex = 0;
 		}
 
-		characterSpriteMovement.ChangeState(currentState, GetCharacterDirection(), false);
+		ChangeState(currentState);
 	}
 
 	public CharacterDirection GetCharacterDirection() {

@@ -23,7 +23,7 @@ public class CharacterSpriteMovement : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		spriteListByState = new Dictionary<CharacterState, List<Sprite>>();
 		spriteListByState.Add(CharacterState.Healthy, healthySprites);
 		spriteListByState.Add(CharacterState.Infected, infectedSprites);
