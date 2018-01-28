@@ -138,7 +138,7 @@ public class Character : MonoBehaviour {
 
 	public void ChangeState(CharacterState characterState, bool showYawn) {
 		currentState = characterState;
-		characterSpriteMovement.ChangeState(currentState, GetCharacterDirection(), showYawn);
+		characterSpriteMovement.ChangeState(currentState, GetCharacterDirection(), showYawn, currentInfectionResistance, currentHealth);
 	}
 
 

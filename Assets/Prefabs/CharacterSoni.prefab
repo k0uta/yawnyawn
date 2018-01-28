@@ -138,20 +138,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 322a4759bf8ec49239ef464af6d717df, type: 3}
   - {fileID: 21300000, guid: dd13f9623295441f6873e4d2825d55d6, type: 3}
   infectedSprites:
-  - {fileID: 21300000, guid: f4c6ea6058b5f421abf9dcb37c0a5391, type: 3}
-  - {fileID: 21300000, guid: 90a8a240ee0fc40659f14fd75644e720, type: 3}
-  - {fileID: 21300000, guid: 322a4759bf8ec49239ef464af6d717df, type: 3}
-  - {fileID: 21300000, guid: dd13f9623295441f6873e4d2825d55d6, type: 3}
+  - {fileID: 21300000, guid: b82c00160c5174598aa22fcb822596f6, type: 3}
+  - {fileID: 21300000, guid: d4d32ea844fb14cf1b27ef3e4669a0ae, type: 3}
+  - {fileID: 21300000, guid: 1048635ca4dc6400ab6a08fb8943a149, type: 3}
+  - {fileID: 21300000, guid: 1b8ee70e99eda406f93b7a27a75d7f5c, type: 3}
   transmittingSprites:
-  - {fileID: 21300000, guid: f4c6ea6058b5f421abf9dcb37c0a5391, type: 3}
-  - {fileID: 21300000, guid: 90a8a240ee0fc40659f14fd75644e720, type: 3}
-  - {fileID: 21300000, guid: 322a4759bf8ec49239ef464af6d717df, type: 3}
-  - {fileID: 21300000, guid: dd13f9623295441f6873e4d2825d55d6, type: 3}
+  - {fileID: 21300000, guid: dab5c42eea8e643cda87f8d159438136, type: 3}
+  - {fileID: 21300000, guid: a9b0093700aa14f57b26bc672e28c2c3, type: 3}
+  - {fileID: 21300000, guid: e8724091847564b0d86d7374e36bf886, type: 3}
+  - {fileID: 21300000, guid: 384a1185748f741a5b6bb4628521153e, type: 3}
   deadSprites:
-  - {fileID: 21300000, guid: f4c6ea6058b5f421abf9dcb37c0a5391, type: 3}
-  - {fileID: 21300000, guid: 90a8a240ee0fc40659f14fd75644e720, type: 3}
-  - {fileID: 21300000, guid: 322a4759bf8ec49239ef464af6d717df, type: 3}
-  - {fileID: 21300000, guid: dd13f9623295441f6873e4d2825d55d6, type: 3}
+  - {fileID: 21300000, guid: 8c5ee8c0fced94a2997c8ca59ae995b0, type: 3}
+  - {fileID: 21300000, guid: 8c5ee8c0fced94a2997c8ca59ae995b0, type: 3}
+  - {fileID: 21300000, guid: 8c5ee8c0fced94a2997c8ca59ae995b0, type: 3}
+  - {fileID: 21300000, guid: 8c5ee8c0fced94a2997c8ca59ae995b0, type: 3}
   yawnSprite: {fileID: 212653437168226762}
 --- !u!114 &114889660595811032
 MonoBehaviour:

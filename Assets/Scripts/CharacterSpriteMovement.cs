@@ -36,7 +36,7 @@ public class CharacterSpriteMovement : MonoBehaviour {
 
 	}
 
-	public void ChangeState(CharacterState characterState, CharacterDirection characterDirection, bool showYawn) {
+	public void ChangeState(CharacterState characterState, CharacterDirection characterDirection, bool showYawn, int coffeeCups, int energyDrinks) {
 		Sprite newSprite = spriteListByState[characterState][(int) characterDirection];
 		spriteRenderer.sprite = newSprite;
 
