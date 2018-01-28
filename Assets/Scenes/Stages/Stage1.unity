@@ -388,17 +388,22 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 151990562}
     m_Modifications:
+    - target: {fileID: 114362548049462176, guid: fdd703cb9c4a34464b4f5bee432d79a9,
+        type: 2}
+      propertyPath: peekDirections.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4214004626840802, guid: fdd703cb9c4a34464b4f5bee432d79a9, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.4958847
+      value: -1.5725931
       objectReference: {fileID: 0}
     - target: {fileID: 4214004626840802, guid: fdd703cb9c4a34464b4f5bee432d79a9, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.5962181
+      value: -0.5998003
       objectReference: {fileID: 0}
     - target: {fileID: 4214004626840802, guid: fdd703cb9c4a34464b4f5bee432d79a9, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.03268
+      value: -1.0388845
       objectReference: {fileID: 0}
     - target: {fileID: 4214004626840802, guid: fdd703cb9c4a34464b4f5bee432d79a9, type: 2}
       propertyPath: m_LocalRotation.x
@@ -423,6 +428,21 @@ Prefab:
     - target: {fileID: 1633383445370370, guid: fdd703cb9c4a34464b4f5bee432d79a9, type: 2}
       propertyPath: m_Name
       value: Character (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362548049462176, guid: fdd703cb9c4a34464b4f5bee432d79a9,
+        type: 2}
+      propertyPath: peekDirections.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906301912509768, guid: fdd703cb9c4a34464b4f5bee432d79a9,
+        type: 2}
+      propertyPath: _position.x
+      value: -1.960237
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906301912509768, guid: fdd703cb9c4a34464b4f5bee432d79a9,
+        type: 2}
+      propertyPath: _position.z
+      value: 0.26374573
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fdd703cb9c4a34464b4f5bee432d79a9, type: 2}
@@ -514,6 +534,11 @@ Prefab:
         type: 2}
       propertyPath: infectionResistance
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362548049462176, guid: fdd703cb9c4a34464b4f5bee432d79a9,
+        type: 2}
+      propertyPath: peekDirections.Array.data[0]
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fdd703cb9c4a34464b4f5bee432d79a9, type: 2}
