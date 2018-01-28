@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114889660595811032}
   - component: {fileID: 212608602420970058}
   - component: {fileID: 114521034552307810}
+  - component: {fileID: 82395503173714036}
   m_Layer: 0
   m_Name: CharacterSoni
   m_TagString: Character
@@ -133,6 +134,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82395503173714036
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1318446184707164}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114521034552307810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,6 +232,12 @@ MonoBehaviour:
   infectionDuration: 2147483647
   health: 2147483647
   currentState: 0
+  yawnSounds:
+  - {fileID: 8300000, guid: d51da01d6d60b4a7fa31435bc90070b1, type: 3}
+  - {fileID: 8300000, guid: cd3efdb988ff143838e4fc804f6376e3, type: 3}
+  - {fileID: 8300000, guid: 96bba5e2e379e4fb7834effd3175fdab, type: 3}
+  - {fileID: 8300000, guid: 75a6ce53ef2ea4c6c906c48a03274b2c, type: 3}
+  - {fileID: 8300000, guid: 65bd31cd8a0764d7fac97e788963aedc, type: 3}
 --- !u!114 &114633209551438086
 MonoBehaviour:
   m_ObjectHideFlags: 1

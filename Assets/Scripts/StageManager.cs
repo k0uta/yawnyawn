@@ -119,6 +119,8 @@ public class StageManager : MonoBehaviour {
 		if (inspector.currentState == InspectorState.Inspecting) {
 			removeTransmissionTurn(inspector.turnPenalty);
 			inspector.triggerPenalty();
+			inspector.playSound(inspector.angrySound);
+
 		}
 		else {
 			InfectCachedCharacters();
