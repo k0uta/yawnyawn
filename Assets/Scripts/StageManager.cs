@@ -54,6 +54,8 @@ public class StageManager : MonoBehaviour {
 
 	public AudioClip backgroundSound;
 
+	public AudioClip introSound;
+
 
 	// Use this for initialization
 	void Start () {
@@ -69,6 +71,8 @@ public class StageManager : MonoBehaviour {
 		scoreText.text = GameManager.GetScore().ToString();
 
 		introImage.enabled = true;
+
+		audioSource.PlayOneShot(introSound, 1.0f);
 	}
 
 	// Update is called once per frame

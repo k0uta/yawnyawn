@@ -530,7 +530,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortingStrategy: {fileID: 114239843552408198}
-  Dirty: 0
+  Dirty: 1
   _isoAngle: 26.565
   _xRot: 35.625
   _yRot: 45
@@ -1175,6 +1175,7 @@ MonoBehaviour:
   scoreText: {fileID: 114532728764383400}
   clock: {fileID: 114710295566461804}
   backgroundSound: {fileID: 8300000, guid: dee87224e8dc34159a6d000afbfa953b, type: 3}
+  introSound: {fileID: 8300000, guid: b8aba944aa6294e01b477fd97490bfb6, type: 3}
 --- !u!124 &124163302071053906
 Behaviour:
   m_ObjectHideFlags: 1
