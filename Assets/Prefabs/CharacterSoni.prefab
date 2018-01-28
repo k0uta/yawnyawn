@@ -112,11 +112,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca7e38dd9d6724e8a9115d745d6db26c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   bounty: 1
-  peekDirections: 030000000200000003000000030000000200000002000000
-  infectionResistance: 2147483647
+  peekDirections: 01000000010000000200000002000000
+  infectionResistance: 2
   transmissionRange: 1
   infectionDuration: 2147483647
   health: -1
@@ -130,8 +130,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 121107307ef53492c93ed688b3145165, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   healthySprites:
   - {fileID: 21300000, guid: f4c6ea6058b5f421abf9dcb37c0a5391, type: 3}
   - {fileID: 21300000, guid: 90a8a240ee0fc40659f14fd75644e720, type: 3}
@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0176bd5bc42e4e64da89e5a9a1694249, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   ShowBounds: 1
   _position: {x: -4.245286, y: 0, z: 2.5798454}
   _size: {x: 1, y: 1, z: 1}

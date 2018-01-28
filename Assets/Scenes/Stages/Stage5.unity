@@ -258,6 +258,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 350866450}
     m_Modifications:
+    - target: {fileID: 114521034552307810, guid: 0a7771a560e00485b9ade24070cd12df,
+        type: 2}
+      propertyPath: peekDirections.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4954960833259944, guid: 0a7771a560e00485b9ade24070cd12df, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1.654032
@@ -289,6 +294,26 @@ Prefab:
     - target: {fileID: 4954960833259944, guid: 0a7771a560e00485b9ade24070cd12df, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114521034552307810, guid: 0a7771a560e00485b9ade24070cd12df,
+        type: 2}
+      propertyPath: peekDirections.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114521034552307810, guid: 0a7771a560e00485b9ade24070cd12df,
+        type: 2}
+      propertyPath: peekDirections.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114521034552307810, guid: 0a7771a560e00485b9ade24070cd12df,
+        type: 2}
+      propertyPath: peekDirections.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114521034552307810, guid: 0a7771a560e00485b9ade24070cd12df,
+        type: 2}
+      propertyPath: peekDirections.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a7771a560e00485b9ade24070cd12df, type: 2}
@@ -354,7 +379,7 @@ Prefab:
     - target: {fileID: 114521034552307810, guid: 0a7771a560e00485b9ade24070cd12df,
         type: 2}
       propertyPath: peekDirections.Array.data[5]
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114521034552307810, guid: 0a7771a560e00485b9ade24070cd12df,
         type: 2}
@@ -746,7 +771,7 @@ Prefab:
     - target: {fileID: 114521034552307810, guid: 0a7771a560e00485b9ade24070cd12df,
         type: 2}
       propertyPath: peekDirections.Array.data[4]
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114521034552307810, guid: 0a7771a560e00485b9ade24070cd12df,
         type: 2}
